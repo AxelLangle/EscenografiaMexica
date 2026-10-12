@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://m5qllov8ltof"]
+
+[ext_resource type="Script" uid="uid://bcjg3fo3sdm8q" path="res://imported_models/escene_3.gd" id="1_61j2g"]
+[ext_resource type="PackedScene" uid="uid://cgyfx5usm1wl2" path="res://player/player.tscn" id="1_g5iec"]
+[ext_resource type="PackedScene" uid="uid://lf0i0wuet3vv" path="res://imported_models/DesertFloorSandQuads/DesertFloorSandQuads.glb" id="2_61j2g"]
+[ext_resource type="PackedScene" uid="uid://d0jeqbyynsnq7" path="res://imported_models/FogDomeBackdropQuads/FogDomeBackdropQuads.glb" id="3_n7lbx"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2ax0p"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_t544o"]
+sky_material = SubResource("ProceduralSkyMaterial_2ax0p")
+
+[sub_resource type="Environment" id="Environment_2yum0"]
+background_mode = 2
+sky = SubResource("Sky_t544o")
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s7je8"]
+size = Vector3(100, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b4pdr"]
+size = Vector3(100, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hdolt"]
+size = Vector3(100, 10, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pjmdr"]
+size = Vector3(100, 10, 1)
+
+[node name="escene_3" type="Node3D" unique_id=2074696476]
+script = ExtResource("1_61j2g")
+metadata/__editor_changed = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=857406294]
+environment = SubResource("Environment_2yum0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1145044922]
+transform = Transform3D(-0.5137709, -0.85546666, -0.06493358, 0.3810839, -0.29536796, 0.87608945, -0.76864475, 0.4253642, 0.47775614, 0, 3.5388718, -0.06625128)
+light_energy = 0.5
+shadow_enabled = true
+directional_shadow_max_distance = 833.0
+
+[node name="vista" type="Node3D" parent="." unique_id=1011119299]
+
+[node name="floor" type="StaticBody3D" parent="vista" unique_id=1775970173]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="vista/floor" unique_id=627920666]
+shape = SubResource("BoxShape3D_s7je8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="vista/floor" unique_id=1963076826]
+mesh = SubResource("BoxMesh_b4pdr")
+
+[node name="wall" type="StaticBody3D" parent="vista" unique_id=672442991]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.0187345)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="vista/wall" unique_id=459791572]
+shape = SubResource("BoxShape3D_hdolt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="vista/wall" unique_id=1849623595]
+mesh = SubResource("BoxMesh_pjmdr")
+
+[node name="player" parent="vista" unique_id=245035588 instance=ExtResource("1_g5iec")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0398862, 0)
+
+[node name="escenografia" type="Node3D" parent="." unique_id=1208779674]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.284925, 0, 2.9839478)
+
+[node name="piso" type="Node3D" parent="escenografia" unique_id=1988241603]
+
+[node name="DesertFloorSandQuads" parent="escenografia/piso" unique_id=1502113588 instance=ExtResource("2_61j2g")]
+transform = Transform3D(-8.7803045e-08, 1.6405232e-09, 2, 0.24415615, 1.9850411, 9.090574e-09, -1.9850411, 0.24415615, -8.7346606e-08, -3.0473633, 1.353657, -5.8579464)
+
+[node name="DesertFloorSandQuads2" parent="escenografia/piso" unique_id=1097502857 instance=ExtResource("2_61j2g")]
+transform = Transform3D(-8.7803045e-08, 1.6405232e-09, 2, 0.24415615, 1.9850411, 9.090574e-09, -1.9850411, 0.24415615, -8.7346606e-08, -1.8847086, 1.353657, -5.8579464)
+
+[node name="DesertFloorSandQuads3" parent="escenografia/piso" unique_id=2076571522 instance=ExtResource("2_61j2g")]
+transform = Transform3D(-8.7803045e-08, 1.6405232e-09, 2, 0.24415615, 1.9850411, 9.090574e-09, -1.9850411, 0.24415615, -8.7346606e-08, -0.9762759, 1.353657, -5.8579464)
+
+[node name="DesertFloorSandQuads4" parent="escenografia/piso" unique_id=1458901137 instance=ExtResource("2_61j2g")]
+transform = Transform3D(-8.7803045e-08, 1.6405232e-09, 2, 0.24415615, 1.9850411, 9.090574e-09, -1.9850411, 0.24415615, -8.7346606e-08, 0.5731344, 1.353657, -5.8579464)
+
+[node name="fondo" type="Node3D" parent="escenografia" unique_id=1867594658]
+
+[node name="FogDomeBackdropQuads" parent="escenografia/fondo" unique_id=917864760 instance=ExtResource("3_n7lbx")]
+transform = Transform3D(-4, 2.4228491e-08, -6.012001e-07, -3.353139e-08, 3.9815683, 0.3835544, 6.00753e-07, 0.3835544, -3.9815683, -1.2612648, 3.134778, -5.731492)

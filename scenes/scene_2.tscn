@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://dt2cp6ngeyq14"]
+
+[ext_resource type="PackedScene" uid="uid://cgyfx5usm1wl2" path="res://player/player.tscn" id="1_02v7m"]
+[ext_resource type="Script" uid="uid://buo0ymwyxkrq8" path="res://imported_models/scene_2.gd" id="1_mejfh"]
+[ext_resource type="PackedScene" uid="uid://bu36m5ee3gvjk" path="res://imported_models/river-diorama-stage-set/river-diorama-stage-set.glb" id="2_mejfh"]
+[ext_resource type="PackedScene" uid="uid://b1002seny6641" path="res://imported_models/theatrical-smoke-backdrop/theatrical-smoke-backdrop.glb" id="3_ccscm"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sobq1"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_af6y7"]
+sky_material = SubResource("ProceduralSkyMaterial_sobq1")
+
+[sub_resource type="Environment" id="Environment_10jjp"]
+background_mode = 2
+sky = SubResource("Sky_af6y7")
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f5u5i"]
+size = Vector3(100, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3gepn"]
+size = Vector3(100, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sobq1"]
+size = Vector3(100, 10, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_af6y7"]
+size = Vector3(100, 10, 1)
+
+[node name="scene_2" type="Node3D" unique_id=198513420]
+script = ExtResource("1_mejfh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=177797297]
+transform = Transform3D(-0.3206129, 0.9153614, -0.2435589, 0.0152374925, 0.26208377, 0.9649249, 0.94708776, 0.3056561, -0.09797525, 0, 20.024658, -20.351437)
+light_color = Color(0.7529412, 0.7529412, 0.7529412, 1)
+light_energy = 1.25
+shadow_enabled = true
+directional_shadow_max_distance = 1056.0
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=1444681884]
+transform = Transform3D(-0.3206129, 0.9153614, -0.24355891, 0.0152374925, 0.26208377, 0.9649249, 0.94708776, 0.3056561, -0.09797526, 43.81787, 20.024658, -20.351437)
+light_color = Color(0.7529412, 0.7529412, 0.7529412, 1)
+light_energy = 1.25
+shadow_enabled = true
+directional_shadow_max_distance = 1056.0
+
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="." unique_id=1701966649]
+transform = Transform3D(-0.3206129, 0.9153614, -0.24355891, 0.0152374925, 0.26208377, 0.9649249, 0.94708776, 0.3056561, -0.09797526, -86.92297, 20.024658, -20.351437)
+light_color = Color(0.7529412, 0.7529412, 0.7529412, 1)
+light_energy = 1.25
+shadow_enabled = true
+directional_shadow_max_distance = 1056.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=791952551]
+environment = SubResource("Environment_10jjp")
+
+[node name="floor" type="StaticBody3D" parent="." unique_id=289434692]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor" unique_id=1992532741]
+shape = SubResource("BoxShape3D_f5u5i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor" unique_id=1667979623]
+mesh = SubResource("BoxMesh_3gepn")
+
+[node name="wall" type="StaticBody3D" parent="." unique_id=812947349]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.0187345)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall" unique_id=1686928706]
+shape = SubResource("BoxShape3D_sobq1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall" unique_id=303209205]
+mesh = SubResource("BoxMesh_af6y7")
+
+[node name="player" parent="." unique_id=245035588 instance=ExtResource("1_02v7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0398862, 0)
+
+[node name="river" parent="." unique_id=565617317 instance=ExtResource("2_mejfh")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.9994823, -3.7301297)
+
+[node name="river-diorama-stage-set5" parent="river" unique_id=1431011117 instance=ExtResource("2_mejfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7785736, 0, -0.06562984)
+
+[node name="river-diorama-stage-set2" parent="river" unique_id=1815035704 instance=ExtResource("2_mejfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.0054653)
+
+[node name="river-diorama-stage-set6" parent="river" unique_id=2033385144 instance=ExtResource("2_mejfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.7539237)
+
+[node name="river-diorama-stage-set3" parent="river" unique_id=1584186612 instance=ExtResource("2_mejfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.4600169)
+
+[node name="river-diorama-stage-set4" parent="river" unique_id=10344829 instance=ExtResource("2_mejfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8314613, 0, -0.06562984)
+
+[node name="background" parent="." unique_id=22409086 instance=ExtResource("3_ccscm")]
+transform = Transform3D(38, 0, 0, 0, 38, 0, 0, 0, 38, 0, 18.320295, -17.118107)
+
+[node name="background2" parent="." unique_id=343337960 instance=ExtResource("3_ccscm")]
+transform = Transform3D(32.088253, 0, 20.35544, 0, 38.000004, 0, -20.35544, 0, 32.088253, -58.28858, 18.320295, -0.71390533)
+
+[node name="background3" parent="." unique_id=32300600 instance=ExtResource("3_ccscm")]
+transform = Transform3D(32.592495, 0, -19.537891, 0, 38, 0, 19.537891, 0, 32.592495, 60.48291, 18.320295, -0.71390533)
